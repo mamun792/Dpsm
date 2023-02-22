@@ -39,19 +39,19 @@
 								<form method="POST" action="{{ route('register') }}">
                           @csrf
                                     <div class="form-group">
-										<input class="form-control" type="text" name="name" value="{{old('name')}}" placeholder="Name">
+										<input class="form-control   @error('name') is-invalid @enderror" type="text" name="name" value="{{old('name')}}" placeholder="Name">
                                  @error('name')
                                  <span class="text-danger">{{$message}}</span>
                                  @enderror
 									</div>
 									<div class="form-group">
-										<input class="form-control" type="text" name="email" value="{{old('email')}}" placeholder="Email">
+										<input class="form-control   @error('email') is-invalid @enderror" type="text" name="email" value="{{old('email')}}" placeholder="Email">
                                         @error('email')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror
 									</div>
 									<div class="form-group input-group">
-										<input class="form-control" id="password" type="password"  name="password" value="{{old('password')}}" placeholder="Password">
+										<input class="form-control   @error('password') is-invalid @enderror" id="password" type="password"  name="password" value="{{old('password')}}" placeholder="Password">
 
                                         <div class="input-group-append" onclick="myFunction()">
 
@@ -79,7 +79,7 @@
                                     <span class="text-danger">{{$message}}</span>
                                     @enderror
 									<div class="form-group">
-										<input class="form-control" type="password"  name="password_confirmation" placeholder="Confirm Password">
+										<input class="form-control   @error('password_confirmation') is-invalid @enderror" type="password"  name="password_confirmation" placeholder="Confirm Password">
                                         @error('password_confirmation')
                                         <span class="text-danger">{{$message}}</span>
                                         @enderror

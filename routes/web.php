@@ -5,15 +5,41 @@ use App\Http\Controllers\BackhandController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\DoctorDashbord;
+use App\Http\Controllers\FavouriteController;
+use App\Http\Controllers\DoctorDetielController;
 use Illuminate\Support\Facades\Route;
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-//FronendController
-Route::get('/', [FrontendController::class, 'index'])->name('index');
+//fontend
 
+Route::get('/', [FrontendController::class, 'index'])->name('index');
+Route::get('doctor/profile/{id}', [FrontendController::class, 'doctor_profile'])->name('doctor.profile');
+Route::get('profile/details',[FrontendController::class,'profile_detals'])->name('profile/details');
+Route::get('favourit/details',[FavouriteController::class,'favourit'])->name('favourit.details');
+Route::get('book/now',[FrontendController::class,'book_now'])->name('book.now');
+Route::post('custom/login',[FrontendController::class,'custom_login'])->name('custom.login');
+Route::get('add/to/favourite/{id}',[FrontendController::class,'add_favourite'])->name('add.favourite');
+
+//PatientController
+Route::get('profile/info',[PatientController::class,'insert'])->name('profile.insert');
+Route::post('profile/create',[PatientController::class,'store'])->name('profile.store');
+Route::get('profile/details/edit/{id}',[PatientController::class,'edit'])->name('profile.details.edit');
+Route::post('profile/details/update/{id}',[PatientController::class,'update'])->name('profile.details.update');
+Route::get('profile/change/password',[PatientController::class,'profile_change_password'])->name('profile.change.password');
+
+//DoctordetailesController
+Route::resource('doctorDetailes',DoctorDetielController::class);
+
+
+
+//DoctorDashbord
+Route::get('Doctor/dashboard',[DoctorDashbord::class,'index'])->name('doctor.dash');
+Route::get('doctor/change/password',[DoctorDashbord::class,'doctor_change_password'])->name('doctor.change.password');
+
+//Backhand
 
 Route::get('/dashboard', [BackhandController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
 //spelistContr0ller
@@ -38,6 +64,11 @@ Route::post('/change/information', [ProfileController::class, 'change_informatio
 //googleController
 Route::get('google/redirect',[GoogleController::class,'redirect'])->name('google.redirect');
 Route::get('google/callback',[GoogleController::class,'callback'])->name('google.callback');
+
+
+//DoctorController
+Route::resource('doctor',DoctorController::class);
+Route::post('add/user',[UsersController::class,'insert'])->name('doctor.regi');
 
 
 require __DIR__.'/auth.php';

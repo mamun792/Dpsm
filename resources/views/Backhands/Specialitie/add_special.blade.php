@@ -14,7 +14,7 @@
         <div class="col-12 col-sm-6">
             <div class="form-group">
                 <label>Specialities</label>
-                <input type="text" class="form-control" value="{{old('special')}}" name="special">
+                <input type="text" class="form-control @error('special') is-invalid  @enderror" value="{{old('special')}}" name="special">
                 @error('special')
                 <span class="text-danger">{{$message}}</span>
                 @enderror
@@ -53,6 +53,19 @@
 </form>
 
 
+
+<script>
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    </script>
+    <script>
+    $(document.ready()function(){
+    alert();
+    });
+    </script>
 
 @endsection
 
