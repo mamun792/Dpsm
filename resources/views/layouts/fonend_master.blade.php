@@ -37,13 +37,26 @@
         <header class="header">
             <nav class="navbar navbar-expand-lg header-nav">
                 <div class="navbar-header">
-
+                    <div class="navbar-header">
+                        <a id="mobile_btn" href="javascript:void(0);">
+                            <span class="bar-icon">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </span>
+                        </a>
+                        <a href="index-2.html" class="navbar-brand logo">
+                            {{-- <img src="assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
+                            <h1 class="text-success">DLPCMS</h1>
+                        </a>
+                    </div>
 
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
                         <a href="index-2.html" class="menu-logo">
-                            <img src="{{ asset('frontend_assets/img/logo.png') }}" class="img-fluid" alt="Logo">
+                            {{-- <img src="{{ asset('frontend_assets/img/logo.png') }}" class="img-fluid" alt="Logo"> --}}
+                            <h1 class="text-blue p-5">DLPCMS</h1>
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);">
                             <i class="fas fa-times"></i>
@@ -145,7 +158,8 @@
                             <!-- Footer Widget -->
                             <div class="footer-widget footer-about">
                                 <div class="footer-logo">
-                                    <img src="{{ asset('frontend_assets/img/footer-logo.png') }}" alt="logo">
+                                    {{-- <img src="{{ asset('frontend_assets/img/footer-logo.png') }}" alt="logo"> --}}
+<h1 class="text-white lg-100">DLPCMS</h1>
                                 </div>
                                 <div class="footer-about-content">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -188,8 +202,7 @@
                                     <li><a href="search.html"><i class="fas fa-angle-double-right"></i> Search for
                                             Doctors</a></li>
                                     <li><a href="{{ route('login') }}"><i class="fas fa-angle-double-right"></i> Login</a></li>
-                                    <li><a href="{{ route('register') }}"><i class="fas fa-angle-double-right"></i> Register</a>
-                                    </li>
+
                                     <li><a href="booking.html"><i class="fas fa-angle-double-right"></i> Booking</a>
                                     </li>
                                     <li><a href="patient-dashboard.html"><i class="fas fa-angle-double-right"></i>

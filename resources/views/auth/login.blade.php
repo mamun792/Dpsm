@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <title>Doccure - Login</title>
+    <title>{{ env('APP_NAME') }}</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('dashboard_assets/img/favicon.png')}}">
@@ -29,7 +29,8 @@
             <div class="container">
                 <div class="loginbox">
                     <div class="login-left">
-                        <img class="img-fluid" src="{{ asset('dashboard_assets/img/logo-white.png')}}" alt="Logo">
+                        {{-- <img class="img-fluid" src="{{ asset('dashboard_assets/img/logo-white.png')}}" alt="Logo"> --}}
+                        <h1 class="text-white p-5">DLPCMS</h1>
                     </div>
                     <div class="login-right">
                         <div class="login-right-wrap">

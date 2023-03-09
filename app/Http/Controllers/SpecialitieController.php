@@ -17,10 +17,10 @@ class SpecialitieController extends Controller
         return view('Backhands.Specialitie.special_doctor', compact('speci'));
     }
 
-    public function add()
-    {
-        return  view('Backhands.Specialitie.add_special');
-    }
+    // public function add()
+    // {
+    //     return  view('Backhands.Specialitie.add_special');
+    // }
 
     public function insert(Request $request)
     {

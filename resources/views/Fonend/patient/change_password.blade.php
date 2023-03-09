@@ -75,10 +75,10 @@
     </div>
 </div>
 
-    <div class="card">
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-12 col-lg-10">
+<div class="card">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-12 col-lg-10">
                 <h1 class="m-t-3">Change Information</h1>
                 <form method="POST" action="{{route('change.information')}}" enctype="multipart/form-data">
                     @csrf

@@ -19,12 +19,13 @@ Route::get('/', [FrontendController::class, 'index'])->name('index');
 Route::get('doctor/profile/{id}', [FrontendController::class, 'doctor_profile'])->name('doctor.profile');
 Route::get('profile/details',[FrontendController::class,'profile_detals'])->name('profile/details');
 Route::get('favourit/details',[FavouriteController::class,'favourit'])->name('favourit.details');
-Route::get('book/now',[FrontendController::class,'book_now'])->name('book.now');
+// Route::get('book/now',[FrontendController::class,'book_now'])->name('book.now');
 Route::post('custom/login',[FrontendController::class,'custom_login'])->name('custom.login');
 Route::get('add/to/favourite/{id}',[FrontendController::class,'add_favourite'])->name('add.favourite');
+Route::get('doctor/book/now/{id}', [FrontendController::class, 'doctor_book_now'])->name('doctor.book.now');
 
 //PatientController
-Route::get('profile/info',[PatientController::class,'insert'])->name('profile.insert');
+// Route::get('profile/info',[PatientController::class,'insert'])->name('profile.insert');
 Route::post('profile/create',[PatientController::class,'store'])->name('profile.store');
 Route::get('profile/details/edit/{id}',[PatientController::class,'edit'])->name('profile.details.edit');
 Route::post('profile/details/update/{id}',[PatientController::class,'update'])->name('profile.details.update');
@@ -37,14 +38,18 @@ Route::resource('doctorDetailes',DoctorDetielController::class);
 
 //DoctorDashbord
 Route::get('Doctor/dashboard',[DoctorDashbord::class,'index'])->name('doctor.dash');
+Route::get('doctor/time/schedules',[DoctorDashbord::class,'doctor_time_schedule'])->name('doctor.time.schedules');
 Route::get('doctor/change/password',[DoctorDashbord::class,'doctor_change_password'])->name('doctor.change.password');
-
+Route::post('doctor/time/schedules/add',[DoctorDashbord::class,'doctor_time_schedule_add'])->name('doctor.time.schedules.add');
+Route::get('doctor/time/schedules/edit/{id}',[DoctorDashbord::class,'doctor_time_schedule_edit'])->name('doctor.time.schedules.edit');
+Route::post('doctor/time/schedules/changes/{id}',[DoctorDashbord::class,'doctor_time_schedule_changes'])->name('doctor.time.schedules.changes');
+Route::get('doctor/delete/schedules/{id}',[DoctorDashbord::class,'doctor_delete_schedules'])->name('doctor.delete.schedules');
 //Backhand
 
-Route::get('/dashboard', [BackhandController::class,'dashboard'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [BackhandController::class,'dashboard'])->middleware(['auth'])->name('dashboard');
 //spelistContr0ller
 Route::get('Specialitie',[SpecialitieController::class,'special'])->name('specialitie');
-Route::get('Add',[SpecialitieController::class,'add'])->name('add');
+// Route::get('Add',[SpecialitieController::class,'add'])->name('add');
 Route::get('special/update/{special_id}',[SpecialitieController::class,'edit']);
 Route::post('supdate/special_update/{spec_id}',[SpecialitieController::class,'Updates']);
 Route::get('special/delete/{special_id}',[SpecialitieController::class,'delete']);

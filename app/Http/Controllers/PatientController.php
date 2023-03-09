@@ -9,11 +9,11 @@ use Carbon\Carbon;
 
 class PatientController extends Controller
 {
-    public function insert()
-    {
+    // public function insert()
+    // {
 
-        return view('Fonend.patient.insert');
-    }
+    //     return view('Fonend.patient.insert');
+    // }
     public function store(Request $request)
     {
 

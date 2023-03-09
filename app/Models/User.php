@@ -44,5 +44,8 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    function user(){
+        return $this->belongsTo(Doctor::class);
+            }
 
 }

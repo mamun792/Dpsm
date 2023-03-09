@@ -8,7 +8,7 @@ use App\Models\Doctor;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
-
+use LVR\CountryCode\Three;
 class DoctorDetielController extends Controller
 {
     /**
@@ -84,7 +84,8 @@ class DoctorDetielController extends Controller
 
                 'fname' => 'required|max:25',
                 'lname' => 'required',
-                'phone_number' => 'required',
+                 'phone_number' => 'required',
+                // 'phone_number' => 'required|numeric|digits:10',
                 'city' => 'required',
                 'degree' => 'required',
                 'hospital_address' => 'required',

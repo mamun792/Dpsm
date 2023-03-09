@@ -1,4 +1,8 @@
 
+/* Bootstrap css */
+@import "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css";
+
+
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,700,900');
 @font-face {
@@ -29,6 +33,12 @@
 	-moz-osx-font-smoothing: grayscale;
 	font-feature-settings: 'liga';
 }
+
+/* timepiker */
+
+
+
+/* timePiker */
 
 html {
     height: 100%;
@@ -6682,3 +6692,5 @@ html.menu-opened body {
 		margin-bottom: 10px;
 	}
 }
+
+/*

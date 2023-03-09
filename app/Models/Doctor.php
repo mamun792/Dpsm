@@ -14,4 +14,10 @@ class Doctor extends Model
     {
         return $this->hasOne(_specilest::class, 'id', 'special_id');
     }
+
+    function relationwithUser()
+    {
+        return $this->hasOne(User::class,'id','doctor_id');
+    }
+
 }

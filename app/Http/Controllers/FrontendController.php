@@ -6,6 +6,7 @@ use App\Models\_specilest;
 use App\Models\Doctor;
 use App\Models\Favourit;
 use App\Models\User;
+use App\Models\time_schedules;
 use App\Models\Profile_detiel;
 use App\Models\Featured_photo;
 use Illuminate\Http\Request;
@@ -20,6 +21,7 @@ class FrontendController extends Controller
 {
     public function index()
     {
+
         $specilest = _specilest::latest()->get();
         $doctor = Doctor::latest()->get();
 
@@ -27,14 +29,16 @@ class FrontendController extends Controller
     }
     public function doctor_profile($id)
     {
-        $doctor = Doctor::find($id);
-
-        $related_doctor = Doctor::where('special_id', $doctor->special_id)->where('id', '!=', $id)->get();
+       $doctor = Doctor::find($id);
+  
+       $related_doctor = Doctor::where('special_id', $doctor->special_id)->where('id', '!=', $id)->get();
         $fecture_photo = Featured_photo::where('doctor_id', $id)->get();
         return view('Fonend.doctor_profile', compact('doctor', 'fecture_photo', 'related_doctor'));
+
     }
     public function profile_detals()
     {
+
         $user = User::find(Auth::id());
         $us = Profile_detiel::all();
         $profile_det = DB::table('users')->join('profile_detiels', 'users.id', '=', 'profile_detiels.user_id')->where('user_id', $user->id)->get();
@@ -53,10 +57,10 @@ class FrontendController extends Controller
         return back();
     }
 
-    public function book_now()
+    public function doctor_book_now($id)
     {
-
-        return view('Fonend.booking');
+        $doctor = Doctor::find($id);
+        return view('Fonend.book_now',compact('doctor'));
     }
 
     public function custom_login(Request $request)

@@ -31,7 +31,7 @@
                                 class="img-fluid" alt="User Image">
                         </div>
                         <div class="doc-info-cont">
-                            <h4 class="doc-name">{{ $doctor->fname }} {{ $doctor->lname }}</h4>
+                            <h4 class="doc-name">{{ $doctor->fname }} {{ $doctor->lname}}</h4>
                             <p class="doc-speciality">{{ $doctor->degree }}</p>
                             <p class="doc-department"><img
                                     src="{{ asset('uploads/special_photp/') }}/{{ $doctor->relationwithspeclist->category_photo }}"
@@ -51,8 +51,8 @@
                                     @foreach ($fecture_photo as $fecture_photos)
                                     <li>
                                         <a href="#" data-fancybox="gallery">
-                                            <img src="{{ asset('uploads/doctors_features_photos') }}/{{ $fecture_photos->featured_photos_name }}"
-                                               >
+                                            <img
+                                                src="{{ asset('uploads/doctors_features_photos') }}/{{ $fecture_photos->featured_photos_name }}">
                                         </a>
                                     </li>
                                     @endforeach
@@ -90,7 +90,7 @@
                             </a>
                         </div>
                         <div class="clinic-booking">
-                            <a class="apt-btn" href="booking.html">Book Appointment</a>
+                            <a class="apt-btn" href="{{route('doctor.book.now',$doctor->id)}}">Book Appointment</a>
                         </div>
                     </div>
                 </div>
@@ -149,7 +149,7 @@
                                                     <div class="timeline-content">
                                                         <a href="#/" class="name">{{ $doctor->college}}</a>
                                                         <div>{{$doctor->degree}}</div>
-                                                        <span class="time">{{$doctor->	year_of_completion}}</span>
+                                                        <span class="time">{{$doctor-> year_of_completion}}</span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -161,7 +161,7 @@
                                                     <div class="timeline-content">
                                                         <a href="#/" class="name">{{ $doctor->college}}</a>
                                                         <div>{{$doctor->degree}}</div>
-                                                        <span class="time">{{$doctor->	year_of_completion}}</span>
+                                                        <span class="time">{{$doctor-> year_of_completion}}</span>
                                                     </div>
                                                 </div>
                                             </li>
@@ -294,15 +294,16 @@
                                             <span class="d-inline-block average-rating">(4)</span>
                                         </div>
                                         <div class="clinic-details mb-0">
-                                            <h5 class="clinic-direction"> <i class="fas fa-map-marker-alt"></i> {{ $doctor->hospital_address }}
-                                                <br><a
-                                                    href="javascript:void(0);">Get Directions</a></h5>
+                                            <h5 class="clinic-direction"> <i class="fas fa-map-marker-alt"></i> {{
+                                                $doctor->hospital_address }}
+                                                <br><a href="javascript:void(0);">Get Directions</a>
+                                            </h5>
                                             <ul>
                                                 @foreach ($fecture_photo as $fecture_photos)
                                                 <li>
                                                     <a href="#" data-fancybox="gallery">
-                                                        <img src="{{ asset('uploads/doctors_features_photos') }}/{{ $fecture_photos->featured_photos_name }}"
-                                                           >
+                                                        <img
+                                                            src="{{ asset('uploads/doctors_features_photos') }}/{{ $fecture_photos->featured_photos_name }}">
                                                     </a>
                                                 </li>
                                                 @endforeach
@@ -552,56 +553,23 @@
                                     <div class="widget-content">
                                         <div class="listing-hours">
                                             <div class="listing-day current">
-                                                <div class="day">Today <span>5 Nov 2019</span></div>
+                                                <div class="day">Today <span>5 Nov 2022</span></div>
                                                 <div class="time-items">
                                                     <span class="open-status"><span class="badge bg-success-light">Open
                                                             Now</span></span>
                                                     <span class="time">07:00 AM - 09:00 PM</span>
                                                 </div>
                                             </div>
+                                            {{-- @foreach ($relationTimeShedul as $relationTimeSheduls)
+ --}}
+
                                             <div class="listing-day">
-                                                <div class="day">Monday</div>
+                                                <div class="day">{{$doctor->relationDoctor}}</div>
                                                 <div class="time-items">
-                                                    <span class="time">07:00 AM - 09:00 PM</span>
+                                                    <span class="time"></span>
                                                 </div>
                                             </div>
-                                            <div class="listing-day">
-                                                <div class="day">Tuesday</div>
-                                                <div class="time-items">
-                                                    <span class="time">07:00 AM - 09:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="listing-day">
-                                                <div class="day">Wednesday</div>
-                                                <div class="time-items">
-                                                    <span class="time">07:00 AM - 09:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="listing-day">
-                                                <div class="day">Thursday</div>
-                                                <div class="time-items">
-                                                    <span class="time">07:00 AM - 09:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="listing-day">
-                                                <div class="day">Friday</div>
-                                                <div class="time-items">
-                                                    <span class="time">07:00 AM - 09:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="listing-day">
-                                                <div class="day">Saturday</div>
-                                                <div class="time-items">
-                                                    <span class="time">07:00 AM - 09:00 PM</span>
-                                                </div>
-                                            </div>
-                                            <div class="listing-day closed">
-                                                <div class="day">Sunday</div>
-                                                <div class="time-items">
-                                                    <span class="time"><span
-                                                            class="badge bg-danger-light">Closed</span></span>
-                                                </div>
-                                            </div>
+                                            {{-- @endforeach --}}
                                         </div>
                                     </div>
                                 </div>
@@ -617,89 +585,105 @@
         </div>
         <!-- /Doctor Details Tab -->
 
+
+
+
+
     </div>
+
+
+
 </div>
 <!-- /Page Content -->
+<section class="section section-specialities">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="section-header text-center">
+
+                <h2>Related Doctor ({{$related_doctor->count()}})</h2>
+
+            </div>
+
+            <div class="col-lg-8">
+
+                <div class="doctor-slider slider">
+
+                    @foreach ($related_doctor as $related_doctors)
+                    <div class="profile-widget">
+
+                        <div class="doc-img">
+                            <a href="{{route('doctor.profile',$related_doctors->id)}}">
+                                <img class="img-fluid" alt="User Image"
+                                    src="{{asset('uploads/doctor_themble_photo')}}/{{$related_doctors->doctor_themble_photo}}">
+
+                            </a>
+                            <a href="javascript:void(0)" class="fav-btn">
+                                <i class="far fa-bookmark"></i>
+                            </a>
+                        </div>
 
 
 
+                        <div class="pro-content">
 
-        <section class="section section-specialities">
-            <div class="container-fluid">
-                <div class="section-header text-center">
-
-                    <h2>Related Doctor ({{$related_doctor->count()}})</h2>
-
-                </div>
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <!-- Slider -->
-                        @foreach ($related_doctor as $related_doctors)
-                        <div class="specialities-slider slider">
-
-
-                            <div class="profile-widget">
-                                <div class="doc-img">
-                                    <a href="{{route('doctor.profile',$related_doctors->id)}}">
-                                        <img class="img-fluid" alt="User Image"
-                                            src="{{asset('uploads/doctor_themble_photo')}}/{{$related_doctors->doctor_themble_photo}}">
-                                    </a>
-                                    <a href="javascript:void(0)" class="fav-btn">
-                                        <i class="far fa-bookmark"></i>
-                                    </a>
+                            <h3 class="title">
+                                <a href="{{route('doctor.profile',$related_doctors->id)}}">{{$related_doctors->fname}}
+                                    {{$related_doctors->lname}}</a>
+                                <i class="fas fa-check-circle verified"></i>
+                            </h3>
+                            <p class="speciality">{{$related_doctors->relationwithspeclist->special}}</p>
+                            <div class="rating">
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <i class="fas fa-star filled"></i>
+                                <span class="d-inline-block average-rating">(17)</span>
+                            </div>
+                            <ul class="available-info">
+                                <li>
+                                    <i class="fas fa-map-marker-alt"></i>{{$related_doctors->city}}
+                                </li>
+                                <li>
+                                    <i class="far fa-clock"></i> Available on Fri, 22 Mar
+                                </li>
+                                <li>
+                                    <i class="far fa-money-bill-alt"></i>{{$related_doctors->price}}
+                                    <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
+                                </li>
+                            </ul>
+                            <div class="row row-sm">
+                                <div class="col-6">
+                                    <a href="{{route('doctor.profile',$related_doctors->id)}}" class="btn view-btn">View
+                                        Profile</a>
                                 </div>
-
-
-
-                                <div class="pro-content">
-
-                                    <h3 class="title">
-                                        <a href="{{route('doctor.profile',$related_doctors->id)}}">{{$related_doctors->fname}} {{$related_doctors->lname}}</a>
-                                        <i class="fas fa-check-circle verified"></i>
-                                    </h3>
-                                    <p class="speciality">{{$related_doctors->relationwithspeclist->special}}</p>
-                                    <div class="rating">
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <i class="fas fa-star filled"></i>
-                                        <span class="d-inline-block average-rating">(17)</span>
-                                    </div>
-                                    <ul class="available-info">
-                                        <li>
-                                            <i class="fas fa-map-marker-alt"></i>{{$related_doctors->city}}
-                                        </li>
-                                        <li>
-                                            <i class="far fa-clock"></i> Available on Fri, 22 Mar
-                                        </li>
-                                        <li>
-                                            <i class="far fa-money-bill-alt"></i>{{$related_doctors->price}}
-                                            <i class="fas fa-info-circle" data-toggle="tooltip" title="Lorem Ipsum"></i>
-                                        </li>
-                                    </ul>
-                                    <div class="row row-sm">
-                                        <div class="col-6">
-                                            <a href="{{route('doctor.profile',$related_doctors->id)}}" class="btn view-btn">View Profile</a>
-                                        </div>
-                                        <div class="col-6">
-                                            <a href="booking.html" class="btn book-btn">Book Now</a>
-                                        </div>
-                                    </div>
-
+                                <div class="col-6">
+                                    <a href="booking.html" class="btn book-btn">Book Now</a>
                                 </div>
-
                             </div>
 
-                            <!-- /Doctor Widget -->
-
                         </div>
-                        @endforeach
-                        <!-- /Slider -->
 
                     </div>
+                    @endforeach
+                    <!-- /Doctor Widget -->
+
+
+
+                    <!-- /Slider -->
+
                 </div>
             </div>
-        </section>
+            {{--
+        </div>
+
+    </div> --}}
+</section>
+
+
+
+
+
+<!-- Doctor Widget -->
 
 @endsection

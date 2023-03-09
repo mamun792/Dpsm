@@ -6,7 +6,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>DoctorBD - Dashboard</title>
+    <title>{{ env('APP_NAME') }}</title>
+
+
+
+    <link rel="stylesheet" href="https://opensource.propeller.in/components/typography/css/typography.css">
+    <link rel="stylesheet" href="https://opensource.propeller.in/components/textfield/css/textfield.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://opensource.propeller.in/components/icons/css/google-icons.css">
+
 
     <!-- Favicon -->
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('dashboard_assets/img/favicon.png')}}">
@@ -154,8 +162,8 @@
                                 <p class="text-muted mb-0">{{auth()->user()->role}}</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="{{route('profile.edit')}}">Settings</a>
+
+                        <a class="dropdown-item" href="{{route('profile.edit')}}">My Profile</a>
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
                             <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();

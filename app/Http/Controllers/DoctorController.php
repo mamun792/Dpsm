@@ -56,8 +56,9 @@ class DoctorController extends Controller
 
         $request->validate(
             [
-                'fname' => 'required|max:25',
-                'lname' => 'required',
+                'fname' => 'required|max:20',
+                'lname' => 'required|max:5',
+                'phone_number' => 'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:9',
                 'price' => 'required',
                 'city' => 'required',
                 'degree' => 'required',
@@ -68,6 +69,7 @@ class DoctorController extends Controller
                 'year_of_completion' => 'required',
                 'special_id' => 'required',
                 'doctor_themble_photo' => 'required|image',
+                'featured_photos_name.*' => 'image',
 
             ],
         );
@@ -99,6 +101,7 @@ class DoctorController extends Controller
             'dwards' => $request->dwards,
             'year' => $request->year,
             'registrations' => $request->registrations,
+
             'year_of_registrations' => $request->year_of_registrations,
             'created_at' => Carbon::now(),
         ]);

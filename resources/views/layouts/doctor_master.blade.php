@@ -9,25 +9,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
     <title>{{ env('APP_NAME') }}</title>
 
-    <!-- Favicons -->
-    <link type="image/x-icon" href="{{ asset('frontend_assets/img/favicon.png') }}" rel="icon">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{asset('frontend_assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend_assets/dropzone/dropzone.min.css')}}">
+  <!-- Compiled and minified CSS -->
 
-    <!-- Fontawesome CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/plugins/fontawesome/css/fontawesome.min.css') }} ">
-    <link rel="stylesheet" href="{{ asset('frontend_assets/plugins/fontawesome/css/all.min.css') }} ">
-    <!-- Select2 CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/plugins/select2/css/select2.min.css') }}">
-    <link rel="stylesheet" href="{{asset('frontend_assets/plugins/bootstrap-tagsinput/css/bootstrap-tagsinput.css') }}">
 
-    <link rel="stylesheet" href="{{asset('frontend_assets/plugins/dropzone/dropzone.min.css') }}">
+<link href="https://opensource.propeller.in/components/typography/css/typography.css" rel="stylesheet">
 
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}">
+<link href="https://opensource.propeller.in/components/textfield/css/textfield.css" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<link href="https://opensource.propeller.in/components/icons/css/google-icons.css" rel="stylesheet">
+
+<link href="https://opensource.propeller.in/components/datetimepicker/css/bootstrap-datetimepicker.css" rel="stylesheet">
+<link href="https://opensource.propeller.in/components/datetimepicker/css/pmd-datetimepicker.css" rel="stylesheet">
+
+
+<!-- Favicons -->
+<link href="{{ asset('frontend_assets/img/favicon.png') }}" rel="icon">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{ asset('frontend_assets/css/bootstrap.min.css') }}">
+
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="{{ asset('frontend_assets/plugins/fontawesome/css/fontawesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('frontend_assets/plugins/fontawesome/css/all.min.css') }}">
+
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="{{ asset('frontend_assets/plugins/select2/css/select2.min.css') }}">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="{{ asset('frontend_assets/css/style.css') }}">
+
 
 
 
@@ -51,7 +64,8 @@
                         </span>
                     </a>
                     <a href="index-2.html" class="navbar-brand logo">
-                        <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+                        {{-- <img src="assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
+                        <h1 class="text-success">DLPCMS</h1>
                     </a>
                 </div>
                 <div class="main-menu-wrapper">
@@ -169,8 +183,8 @@
                                     <p class="text-muted mb-0">{{auth()->user()->role}}</p>
                                 </div>
                             </div>
-                            <a class="dropdown-item" href="doctor-dashboard.html">Dashboard</a>
-                            <a class="dropdown-item" href="doctor-profile-settings.html">Profile Settings</a>
+                            <a class="dropdown-item" href="{{ route('doctor.dash') }}">Dashboard</a>
+                            <a class="dropdown-item" href="{{route('doctorDetailes.index')}}">Profile Settings</a>
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -259,7 +273,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="schedule-timings.html">
+                                            <a href="{{route('doctor.time.schedules')}}">
                                                 <i class="fas fa-hourglass-start"></i>
                                                 <span>Schedule Timings</span>
                                             </a>
@@ -338,7 +352,8 @@
                             <!-- Footer Widget -->
                             <div class="footer-widget footer-about">
                                 <div class="footer-logo">
-                                    <img src="{{ asset('frontend_assets/img/footer-logo.png') }}" alt="logo">
+                                    {{-- <img src="{{ asset('frontend_assets/img/footer-logo.png') }}" alt="logo"> --}}
+                                    <h1 class="text-white lg-100">DLPCMS</h1>
                                 </div>
                                 <div class="footer-about-content">
                                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -484,36 +499,30 @@
         </footer>
         <!-- /Footer -->
     </div>
+
     <script src="{{ asset('frontend_assets/js/jquery.min.js') }}"></script>
 
     <!-- Bootstrap Core JS -->
-    <script src="{{ asset('frontend_assets/js/popper.min.js') }}"></script>
-    <script src="{{ asset('frontend_assets/js/bootstrap.min.js') }}"></script>
-
-    <!-- Slick JS -->
-    <script src="{{ asset('frontend_assets/js/slick.js') }}"></script>
-
-    <!-- Custom JS -->
-    <script src="{{ asset('frontend_assets/js/script.js') }}  "></script>
-
-
-
-
-    <!-- Select2 JS -->
-    <script src=" {{ asset('frontend_assets/plugins/select2/js/select2.min.js') }}"></script>
-
-    <!-- Datetimepicker JS -->
-    <script src=" {{ asset('frontend_assets/js/moment.min.js') }}  "></script>
-    <script src="{{ asset('frontend_assets/js/bootstrap-datetimepicker.min.js') }}  "></script>
+    <script src=" {{ asset('frontend_assets/js/popper.min.js') }}"></script>
+    <script src=" {{ asset('frontend_assets/js/bootstrap.min.js') }}"></script>
 
     <!-- Sticky Sidebar JS -->
-    <script src="{{ asset('frontend_assets/plugins/theia-sticky-sidebar/ResizeSensor.js ') }}  "></script>
-    <script src="{{ asset('frontend_assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js ') }}  ">
-    </script>
+    <script src=" {{ asset('frontend_assets/plugins/theia-sticky-sidebar/ResizeSensor.js') }}"></script>
+    <script src=" {{ asset('frontend_assets/plugins/theia-sticky-sidebar/theia-sticky-sidebar.js') }}"></script>
 
-    <script src=" {{ asset('frontend_assets/plugins/bootstrap-tagsinput/js/bootstrap-tagsinput.js') }}  "></script>
-    <script src=" {{ asset('frontend_assets/dropzone/dropzone.min.js') }}  "></script>
+    <!-- Select2 JS -->
+    <script src="{{ asset('frontend_assets/plugins/select2/js/select2.min.js') }}"></script>
 
+    <!-- Custom JS -->
+    <script src="{{ asset('frontend_assets/js/script.js') }}assets/"></script>
+
+ {{-- sweetalert --}}
+ <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+
+    @yield('footer_scprit')
 
 
 

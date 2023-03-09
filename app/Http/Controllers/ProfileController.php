@@ -16,8 +16,8 @@ class ProfileController extends Controller
 
     public function edit(Request $request)
     {
-
-        return view('Backhands.Profile.index');
+        $user=User::find(Auth::id());
+        return view('Backhands.Profile.index',compact('user'));
     }
 
     public function change_password(Request $request)

@@ -3,6 +3,12 @@
     {{-- <div class="content container-fluid"> --}}
 
     <!-- Page Header -->
+    @if (session('Success'))
+    <div class="alert alert-success">
+        {{ session('Success') }}
+    </div>
+    @endif
+
     @if (session('delete'))
         <div class="alert alert-danger">
             {{ session('delete') }}
@@ -19,7 +25,10 @@
                 </ul>
             </div>
             <div class="col-sm-5 col">
-                <a href="{{ route('add') }}" class="btn btn-primary float-right mt-2">Add</a>
+                {{-- <a href="{{ route('add') }}" class="btn btn-primary float-right mt-2">Add</a> --}}
+                <button type="button" class="btn btn-primary float-right mt-2" data-toggle="modal" data-target="#exampleModalCenter">
+                    Add Specialities
+                  </button>
             </div>
         </div>
     </div>
@@ -90,6 +99,71 @@
     </div>
     {{-- </div> --}}
 @endsection
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalCenterTitle">Add Specialities</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="POST" action="{{route('insert')}}" enctype="multipart/form-data">
+                @csrf
+                <div class="row form-row">
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            <label>Specialities</label>
+                            <input type="text" class="form-control @error('special') is-invalid  @enderror"
+                                value="{{old('special')}}" name="special">
+                            @error('special')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-12 col-sm-6">
+                        <div class="form-group">
+                            <label>Image</label>
+                            <style>
+                                .hidden {
+                                    visibility: hidden;
+                                }
+                            </style>
+                            <input type="file" class="form-control" name="category_photo" onchange="readURL(this)" ;>
+                            <img class="hidden mt-3" id="category_photo_viewer" src="#" alt="your image" />
+                            <script>
+                                function readURL(input) {
+                                  if (input.files && input.files[0]) {
+                                    var reader = new FileReader();
+                                    reader.onload = function (e) {
+                                      $('#category_photo_viewer').attr('src', e.target.result).width(150).height(195);
+                                    };
+                                    $('#category_photo_viewer').removeClass('hidden');
+                                    reader.readAsDataURL(input.files[0]);
+                                  }
+                                }
+                            </script>
+                            @error('category_photo')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
+                        </div>
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
 @section('footer_scprit')
     <script>
         $(document).ready(function() {

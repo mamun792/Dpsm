@@ -101,6 +101,7 @@
                     <!-- Doctor Widget -->
                     @foreach ($doctor as $doctors)
                     <div class="profile-widget">
+                      
                         <div class="doc-img">
                             <a href="{{route('doctor.profile',$doctors->id)}}">
                                 <img class="img-fluid" alt="User Image"
@@ -167,16 +168,17 @@
                                 </div>
                                 @auth()
                                 <div class="col-6">
-                                    <a href="booking.html" class="btn book-btn">Book Nows</a>
+                                    <a href="{{route('doctor.book.now',$doctors->id)}}" class="btn book-btn">Book Now</a>
 
 
                                 </div>
                                 @else
                                 <div class="col-6">
-                                    <a href="{{route('book.now')}}" class="btn book-btn">Book Now</a>
 
 
-
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+                                        Book Now
+                                      </button>
                                 </div>
 
                                 @endauth
@@ -198,3 +200,66 @@
 </section>
 <!-- /Popular Section -->
 @endsection
+
+
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Login Now</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form method="post" action="{{route('custom.login')}}">
+                @csrf
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input type="email" class="form-control" name="email" placeholder="Email">
+
+                </div>
+                <label for="exampleInputPassword1">Password</label>
+                <div class="input-group form-group">
+                    <input type="password" name="password" placeholder="Password" id="password"
+                        class="form-control   @error('password') is-invalid @enderror">
+
+
+
+
+                    <div class="input-group-append" onclick="myFunction()">
+
+                        <span class="input-group-text">
+
+                            <i class="fa fa-eye"></i>
+
+                        </span>
+
+                    </div>
+
+                    <script>
+                        function myFunction() {
+                              var x = document.getElementById("password");
+                              if (x.type === "password") {
+                                x.type = "text";
+                              } else {
+                                x.type = "password";
+                              }
+                            }
+                    </script>
+
+
+                </div>
+
+
+
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Understood</button>
+        </div>
+      </div>
+    </div>
+  </div>

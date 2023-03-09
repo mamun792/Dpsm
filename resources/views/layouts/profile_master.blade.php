@@ -48,13 +48,15 @@
                         </span>
                     </a>
                     <a href="index-2.html" class="navbar-brand logo">
-                        <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+                        {{-- <img src="assets/img/logo.png" class="img-fluid" alt="Logo"> --}}
+                        <h1 class="text-success">DLPCMS</h1>
                     </a>
                 </div>
                 <div class="main-menu-wrapper">
                     <div class="menu-header">
                         <a href="index-2.html" class="menu-logo">
                             <img src="assets/img/logo.png" class="img-fluid" alt="Logo">
+
                         </a>
                         <a id="menu_close" class="menu-close" href="javascript:void(0);">
                             <i class="fas fa-times"></i>
@@ -192,16 +194,25 @@
                     <div class="col-md-12 col-12">
                         <nav aria-label="breadcrumb" class="page-breadcrumb">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index-2.html">Home</a></li>
+
+
+
+                                <li class="breadcrumb-item "><a href="{{route('index')}}">Home</a></li>
+
                                 <li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
                             </ol>
                         </nav>
+
                         <h2 class="breadcrumb-title">Profile Settings</h2>
+
+
                     </div>
                 </div>
             </div>
         </div>
         <!-- /Breadcrumb -->
+
+
         <div class="content">
             <div class="container-fluid">
                 <div class="row">
@@ -301,24 +312,24 @@
 
                                 <!-- Profile Settings Form -->
 
-                                <div class="row form-row">
+                                {{-- <div class="row form-row">
                                     <div class="col-12 col-md-12">
-                                        <div class="form-group">
+                                        <div class="form-group"> --}}
                                             @yield('contents')
-                                        </div>
+                                            {{-- </div>
 
 
                                     </div>
 
 
-                                </div>
+                                </div> --}}
 
                             </div>
 
                         </div>
                     </div>
 
-                </div>
+                {{-- </div> --}}
                 <!-- Page Content -->
                 <!-- /Page Content -->
 
@@ -334,7 +345,8 @@
                                     <!-- Footer Widget -->
                                     <div class="footer-widget footer-about">
                                         <div class="footer-logo">
-                                            <img src="{{ asset('frontend_assets/img/footer-logo.png') }}" alt="logo">
+                                            {{-- <img src="{{ asset('frontend_assets/img/footer-logo.png') }}" alt="logo"> --}}
+                                            <h1 class="text-white lg-100">DLPCMS</h1>
                                         </div>
                                         <div class="footer-about-content">
                                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
@@ -485,7 +497,7 @@
                 <!-- /Footer -->
 
 
-            </div>
+            {{-- </div> --}}
 
             <!-- jQuery -->
             <script src="{{ asset('frontend_assets/js/jquery.min.js') }}"></script>
